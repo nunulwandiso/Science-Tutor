@@ -1,8 +1,11 @@
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    background-color: white;
+    color: #000;
 }
 
 nav {
@@ -11,12 +14,15 @@ nav {
     padding: 15px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 15px;
+    padding: 0;
+    margin: 0;
 }
 
 nav a {
@@ -33,12 +39,17 @@ section {
     background: #e0f2fe;
 }
 
+#pricing {
+    background: #f8fafc;
+}
+
 button {
     padding: 10px 20px;
     background: #1e3a8a;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 footer {
@@ -48,9 +59,7 @@ footer {
     padding: 10px;
 }
 
-#pricing {
-    background: #f8fafc;
-}
+
 
 .pricing-cards {
     display: flex;
@@ -67,12 +76,83 @@ footer {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.card h3 {
-    margin-bottom: 10px;
-}
-
 .price {
     font-size: 24px;
     font-weight: bold;
     color: #1e3a8a;
+}
+
+
+
+body.dark {
+    background-color: #0f172a;
+    color: #e5e7eb;
+}
+
+
+body.dark section {
+    background-color: #020617;
+    color: #e5e7eb;
+}
+
+/* Home section specifically */
+body.dark #home {
+    background-color: #020617;
+}
+
+
+body.dark #pricing {
+    background-color: #020617;
+}
+
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4 {
+    color: #f8fafc;
+}
+
+body.dark p,
+body.dark em {
+    color: #e5e7eb;
+}
+
+body.dark .card {
+    background-color: #020617;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+}
+
+body.dark nav,
+body.dark footer {
+    background-color: #020617;
+}
+
+/* Buttons */
+body.dark button {
+    background-color: #1e293b;
+    color: #f8fafc;
+}
+
+body.dark input,
+body.dark textarea {
+    background-color: #020617;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+}
+
+body.dark a {
+    color: #93c5fd;
+}
+
+
+#darkModeToggle {
+    margin-left: 10px;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
 }

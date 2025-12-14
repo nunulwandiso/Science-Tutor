@@ -10,3 +10,24 @@ function openWhatsApp() {
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
 }
+
+
+
+const darkToggle = document.getElementById("darkModeToggle");
+
+
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    if (darkToggle) darkToggle.textContent = "☀️ Light Mode";
+}
+
+
+if (darkToggle) {
+    darkToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+
+        const isDark = document.body.classList.contains("dark");
+        darkToggle.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+}
