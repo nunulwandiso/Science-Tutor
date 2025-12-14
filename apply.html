@@ -12,8 +12,10 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- jsPDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+    <!-- MOBILE FORM STYLES -->
     <style>
         section {
             max-width: 500px;
@@ -76,6 +78,7 @@
 
 <body>
 
+<!-- NAV -->
 <nav>
     <h1>Math & Science Tutor</h1>
 
@@ -88,10 +91,11 @@
     <button id="darkModeToggle">🌙</button>
 </nav>
 
-
+<!-- APPLY -->
 <section>
     <h2>Apply for Tutoring</h2>
 
+    <!-- BOOKING SUMMARY -->
     <div class="summary">
         <strong>Booking Summary</strong>
         <p><strong>Package:</strong> <span id="pkgText">Not selected</span></p>
@@ -115,7 +119,6 @@
             <option>Ethical Hacking</option>
         </select>
 
-    
         <select name="Package" required onchange="updatePackage(this)">
             <option value="">Select Package</option>
             <option value="Hourly" data-price="50">Hourly – R50</option>
@@ -137,20 +140,20 @@
 <script src="script.js"></script>
 
 <script>
-
+/* LOAD SAVED DATA */
 const savedPkg = localStorage.getItem("selectedPackage");
 const savedPrice = localStorage.getItem("selectedPrice");
 const savedSlot = localStorage.getItem("selectedSlot");
 
 if (savedPkg) document.getElementById("pkgText").innerText = savedPkg;
-if (savedSlot) document.getElementById("slotText").innerText = savedSlot;
 if (savedPrice) document.getElementById("priceText").innerText = savedPrice;
+if (savedSlot) document.getElementById("slotText").innerText = savedSlot;
 
-
+/* UPDATE PACKAGE */
 function updatePackage(select) {
     const option = select.options[select.selectedIndex];
-    const price = option.dataset.price;
     const pkg = option.value;
+    const price = option.dataset.price;
 
     localStorage.setItem("selectedPackage", pkg);
     localStorage.setItem("selectedPrice", price);
@@ -159,7 +162,7 @@ function updatePackage(select) {
     document.getElementById("priceText").innerText = price;
 }
 
-
+/* GENERATE PDF + EMAIL */
 function generateInvoice(e) {
     e.preventDefault();
 
@@ -167,22 +170,23 @@ function generateInvoice(e) {
     const pdf = new jsPDF();
 
     const name = document.querySelector('[name="Full Name"]').value;
-    const subject = document.querySelector('[name="Subject"]').value;
+    const email = document.querySelector('[name="Email"]').value;
+    const phone = document.querySelector('[name="Phone"]').value;
     const address = document.querySelector('[name="Address"]').value;
+    const subject = document.querySelector('[name="Subject"]').value;
 
     const pkg = localStorage.getItem("selectedPackage") || "Not Selected";
     const price = localStorage.getItem("selectedPrice") || "0";
     const slot = localStorage.getItem("selectedSlot") || "Not Selected";
     const date = new Date().toLocaleDateString();
-
-
     const invoiceNumber = "INV-" + Date.now();
 
+    /* SAVE BOOKED SLOT */
     let bookedSlots = JSON.parse(localStorage.getItem("bookedSlots")) || [];
     bookedSlots.push(slot);
     localStorage.setItem("bookedSlots", JSON.stringify(bookedSlots));
 
-
+    /* PDF HEADER */
     pdf.setFillColor(17, 17, 17);
     pdf.rect(0, 0, 210, 30, "F");
 
@@ -194,75 +198,45 @@ function generateInvoice(e) {
     pdf.setFontSize(12);
 
     let y = 45;
-
-    pdf.setFont(undefined, "bold");
-    pdf.text("Invoice No:", 20, y);
-    pdf.setFont(undefined, "normal");
-    pdf.text(invoiceNumber, 70, y);
-
-    y += 10;
-    pdf.setFont(undefined, "bold");
-    pdf.text("Date:", 20, y);
-    pdf.setFont(undefined, "normal");
-    pdf.text(date, 70, y);
-
-    y += 15;
-    pdf.setFont(undefined, "bold");
-    pdf.text("Student:", 20, y);
-    pdf.setFont(undefined, "normal");
-    pdf.text(name, 70, y);
-
-    y += 10;
-    pdf.setFont(undefined, "bold");
-    pdf.text("Address:", 20, y);
-    pdf.setFont(undefined, "normal");
-    pdf.text(address, 70, y, { maxWidth: 110 });
-
-    y += 15;
-    pdf.setFont(undefined, "bold");
-    pdf.text("Subject:", 20, y);
-    pdf.setFont(undefined, "normal");
-    pdf.text(subject, 70, y);
-
-    y += 10;
-    pdf.setFont(undefined, "bold");
-    pdf.text("Package:", 20, y);
-    pdf.setFont(undefined, "normal");
-    pdf.text(pkg, 70, y);
-
-    y += 10;
-    pdf.setFont(undefined, "bold");
-    pdf.text("Time Slot:", 20, y);
-    pdf.setFont(undefined, "normal");
-    pdf.text(slot, 70, y);
-
-    y += 10;
-    pdf.setFont(undefined, "bold");
-    pdf.text("Payment Status:", 20, y);
-    pdf.setFont(undefined, "normal");
-    pdf.text("Pending", 70, y);
-
-    y += 20;
-    pdf.setFillColor(240, 240, 240);
-    pdf.rect(15, y - 10, 180, 20, "F");
+    pdf.text(`Invoice No: ${invoiceNumber}`, 20, y); y += 10;
+    pdf.text(`Date: ${date}`, 20, y); y += 10;
+    pdf.text(`Student: ${name}`, 20, y); y += 10;
+    pdf.text(`Email: ${email}`, 20, y); y += 10;
+    pdf.text(`Phone: ${phone}`, 20, y); y += 10;
+    pdf.text(`Address: ${address}`, 20, y, { maxWidth: 170 }); y += 15;
+    pdf.text(`Subject: ${subject}`, 20, y); y += 10;
+    pdf.text(`Package: ${pkg}`, 20, y); y += 10;
+    pdf.text(`Time Slot: ${slot}`, 20, y); y += 10;
+    pdf.text(`Payment Status: Pending`, 20, y); y += 15;
 
     pdf.setFontSize(14);
-    pdf.setFont(undefined, "bold");
-    pdf.text("TOTAL AMOUNT:", 25, y + 3);
-    pdf.text(`R${price}`, 160, y + 3, { align: "right" });
-
-    /* FOOTER */
-    pdf.setFontSize(10);
-    pdf.setTextColor(120, 120, 120);
-    pdf.text(
-        "Payment status: Pending\nPlease keep this invoice for your records.",
-        105,
-        270,
-        { align: "center" }
-    );
+    pdf.text(`TOTAL: R${price}`, 20, y);
 
     pdf.save(`Invoice_${invoiceNumber}.pdf`);
-    alert("Booking successful! Invoice downloaded.");
+
+    /* EMAIL CONTENT */
+    const body =
+`New Tutoring Booking
+
+Invoice: ${invoiceNumber}
+Date: ${date}
+
+Student: ${name}
+Email: ${email}
+Phone: ${phone}
+Address: ${address}
+
+Subject: ${subject}
+Package: ${pkg}
+Time Slot: ${slot}
+Total Amount: R${price}
+
+Payment Status: Pending`;
+
+    window.location.href =
+        "mailto:s217477089@mandela.ac.za" +
+        "?subject=" + encodeURIComponent("New Tutoring Booking – " + invoiceNumber) +
+        "&body=" + encodeURIComponent(body);
 }
 
 /* MOBILE MENU */
