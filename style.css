@@ -170,3 +170,64 @@ input, select, textarea {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+
+/* =========================
+   AVAILABILITY CALENDAR
+========================= */
+
+#availability {
+    background: #f1f5f9;
+}
+
+.availability-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.day {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.day h4 {
+    margin-bottom: 10px;
+}
+
+.available {
+    color: green;
+    font-weight: bold;
+}
+
+.unavailable {
+    color: red;
+    font-weight: bold;
+}
+
+/* Dark Mode Support */
+body.dark #availability {
+    background-color: #020617;
+}
+
+body.dark .day {
+    background-color: #020617;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+}
+
+/* Night session highlight */
+.slot.night {
+    background: #7c3aed;
+}
+
+.slot.night:hover {
+    background: #6d28d9;
+}
+
+/* Dark mode night slot */
+body.dark .slot.night {
+    background-color: #4c1d95;
+}

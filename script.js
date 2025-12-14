@@ -31,3 +31,12 @@ if (darkToggle) {
         localStorage.setItem("theme", isDark ? "dark" : "light");
     });
 }
+
+function selectSlot(slot) {
+    localStorage.setItem("selectedSlot", slot);
+
+    document.getElementById("selectedSlotText").innerHTML =
+        "✅ Selected Slot: <strong>" + slot + "</strong>";
+
+    document.getElementById("applyBtn").style.display = "inline-block";
+}

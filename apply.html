@@ -3,76 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Lwandiso Nunu">
-    <meta name="description" content="Application form for tutoring services by Lwandiso Nunu">
     <title>Apply for Tutoring | Lwandiso Nunu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <nav>
-        <h1>Math & Science Tutor</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="apply.html">Apply</a></li>
-        </ul>
-        <button id="darkModeToggle">🌙 Dark Mode</button>
-    </nav>
+<nav>
+    <h1>Math & Science Tutor</h1>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+    </ul>
+    <button id="darkModeToggle">🌙 Dark Mode</button>
+</nav>
 
-    <section>
-        <h2>Apply for Tutoring</h2>
-        <p>Please fill in the form below. Your booking will be sent via email.</p>
+<section>
+    <h2>Apply for Tutoring</h2>
 
-        <form action="mailto:s217477089@mandela.ac.za" method="POST" enctype="text/plain">
+    <p><strong>Early Booking Notice:</strong><br>
+        Students applying for school-related tutoring are required to apply early
+        to ensure proper lesson planning and structured academic progress.
+    </p>
 
-            <input type="text" name="Full Name" placeholder="Full Name" required>
-            <input type="email" name="Email" placeholder="Email Address" required>
-            <input type="tel" name="Phone" placeholder="Phone Number" required>
+    <p>
+    <strong>Availability Notice:</strong><br>
+    Lesson slots are allocated on a first-come, first-served basis.
+    School-related tutoring applicants are encouraged to apply early
+    to secure availability shown on the weekly calendar.
+</p>
 
-            <label>Subject</label>
-            <select name="Subject" required>
-                <option value="">Select Subject</option>
-                <option>Mathematics</option>
-                <option>Physical Sciences</option>
-                <option>Computer Science</option>
-                <option>Ethical Hacking</option>
-            </select>
 
-            <label>Grade / Level</label>
-            <select name="Grade / Level" required>
-                <option value="">Select Level</option>
-                <option>Grades 1 – 7</option>
-                <option>Grades 8 – 9</option>
-                <option>Grades 10 – 12</option>
-                <option>University / College</option>
-            </select>
+    <form action="mailto:s217477089@mandela.ac.za" method="POST" enctype="text/plain">
 
-            <label>Package Type</label>
-            <select name="Package" required>
-                <option value="">Select Package</option>
-                <option>Hourly (R50/hour)</option>
-                <option>Starter Package (R350/month)</option>
-                <option>Standard Package (R400/month)</option>
-                <option>Intensive Package (R700/month)</option>
-            </select>
+        <input type="text" name="Full Name" placeholder="Full Name" required>
+        <input type="email" name="Email" placeholder="Email Address" required>
+        <input type="tel" name="Phone" placeholder="Phone Number" required>
 
-            <label>Lesson Type</label>
-            <select name="Lesson Type" required>
-                <option value="">Select Lesson Type</option>
-                <option>Online</option>
-                <option>In-Person</option>
-            </select>
+        <label>Subject</label>
+        <select name="Subject" required>
+            <option>Mathematics</option>
+            <option>Physical Sciences</option>
+            <option>Computer Science</option>
+            <option>Ethical Hacking</option>
+        </select>
 
-            <textarea name="Additional Info" placeholder="Additional Information (optional)"></textarea>
+        <label>Grade / Level</label>
+        <select name="Grade" required>
+            <option>Grades 1 – 7</option>
+            <option>Grades 8 – 9</option>
+            <option>Grades 10 – 12</option>
+            <option>University / College</option>
+        </select>
 
-            <button type="submit">Submit Booking</button>
-        </form>
-    </section>
+        <label>Package</label>
+        <select name="Package" required>
+            <option>Hourly</option>
+            <option>Starter</option>
+            <option>Standard</option>
+            <option>Intensive</option>
+        </select>
 
-    <footer>
-        <p>© 2025 Math & Science Tutor</p>
-    </footer>
+        <textarea name="Additional Info" placeholder="Additional information"></textarea>
 
-    <script src="script.js"></script>
+        <button type="submit">Submit Booking</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2025 Math & Science Tutor</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
