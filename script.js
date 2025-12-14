@@ -1,5 +1,5 @@
 function scrollToContact() {
-    document.getElementById("contact").scrollIntoView({
+    document.getElementById("contact")?.scrollIntoView({
         behavior: "smooth"
     });
 }
@@ -11,16 +11,13 @@ function openWhatsApp() {
     window.open(url, "_blank");
 }
 
-
-
+/* DARK MODE */
 const darkToggle = document.getElementById("darkModeToggle");
-
 
 if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
     if (darkToggle) darkToggle.textContent = "☀️ Light Mode";
 }
-
 
 if (darkToggle) {
     darkToggle.addEventListener("click", () => {
@@ -32,6 +29,7 @@ if (darkToggle) {
     });
 }
 
+
 function selectSlot(slot) {
     localStorage.setItem("selectedSlot", slot);
 
@@ -40,3 +38,25 @@ function selectSlot(slot) {
 
     document.getElementById("applyBtn").style.display = "inline-block";
 }
+
+
+let scale = 1;
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImage");
+
+function openImageModal() {
+    modal.style.display = "flex";
+    scale = 1;
+    modalImg.style.transform = "scale(1)";
+}
+
+function closeImageModal() {
+    modal.style.display = "none";
+}
+
+modalImg?.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    scale += e.deltaY * -0.001;
+    scale = Math.min(Math.max(1, scale), 3);
+    modalImg.style.transform = `scale(${scale})`;
+});
