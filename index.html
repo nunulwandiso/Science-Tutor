@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math & Science Tutor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <h1>Math & Science Tutor</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#subjects">Subjects</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h2>Professional Tutoring Services</h2>
+        <p>
+            Mathematics (All Grades) • Physical Sciences • Computer Science
+        </p>
+        <button onclick="scrollToContact()">Book a Lesson</button>
+    </section>
+
+    <!-- Subjects -->
+    <section id="subjects">
+        <h2>Subjects Offered</h2>
+        <ul>
+            <li>Mathematics – All Grades</li>
+            <li>Physical Sciences – Grades 10–12</li>
+            <li>Computer Science – University / App Development</li>
+            <li>Exam & Test Preparation</li>
+            <li>Homework Assistance</li>
+        </ul>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+        <h2>Pricing</h2>
+
+        <!-- Hourly Rates -->
+        <h3>Hourly Rates</h3>
+        <div class="pricing-cards">
+
+            <div class="card">
+                <h4>All Subjects</h4>
+                <p class="price">R50 / hour</p>
+                <p>Flexible scheduling</p>
+                <button onclick="openWhatsApp()">Book Now</button>
+            </div>
+
+        </div>
+
+        <!-- Monthly Packages -->
+        <h3>Monthly Packages</h3>
+        <div class="pricing-cards">
+
+            <div class="card">
+                <h4>Starter Package</h4>
+                <p class="price">R350 / month</p>
+                <p>1 lesson per week</p>
+                <p>4 lessons</p>
+                <button onclick="openWhatsApp()">Enquire</button>
+            </div>
+
+            <div class="card">
+                <h4>Standard Package</h4>
+                <p class="price">R400 / month</p>
+                <p>2 lessons per week</p>
+                <p>8 lessons</p>
+                <button onclick="openWhatsApp()">Enquire</button>
+            </div>
+
+            <div class="card">
+                <h4>Intensive Package</h4>
+                <p class="price">R700 / month</p>
+                <p>4 lessons per week</p>
+                <p>16 lessons</p>
+                <button onclick="openWhatsApp()">Enquire</button>
+            </div>
+
+        </div>
+
+        <!-- Online vs In-Person -->
+        <h3>Lesson Type</h3>
+        <div class="pricing-cards">
+
+            <div class="card">
+                <h4>Online Lessons</h4>
+                <p class="price">R50 / hour</p>
+                <p>Zoom / Google Meet</p>
+                <button onclick="openWhatsApp()">Book Online</button>
+            </div>
+
+            <div class="card">
+                <h4>In-Person Lessons</h4>
+                <p class="price">R50 / hour</p>
+                <p>Student’s home</p>
+                <p>Travel fee may apply</p>
+                <button onclick="openWhatsApp()">Book In-Person</button>
+            </div>
+
+        </div>
+
+        <p><em>Discounts available for multiple students or long-term bookings.</em></p>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I am a dedicated tutor helping students understand Mathematics,
+            Physical Sciences, and Computer Science through clear explanations
+            and practical examples.
+        </p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Email: s217477089@mandela.ac.za</p>
+        <p>WhatsApp: +27 71 935 8875</p>
+
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Math & Science Tutor</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
