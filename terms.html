@@ -3,154 +3,181 @@
 
 <head>
     <meta charset="UTF-8">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="author" content="Lwandiso Nunu">
     <meta name="description"
         content="Terms and conditions for tutoring services by Lwandiso Nunu, including Ethical Hacking education scope and responsibilities.">
     <meta name="keywords"
         content="Ethical Hacking, Cybersecurity, Terms and Conditions, Lwandiso Nunu, Ethical Hacker Education">
+
     <title>Terms & Conditions | Lwandiso Nunu</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                left: -260px;
+                width: 250px;
+                height: 100vh;
+                background: #111;
+                flex-direction: column;
+                padding-top: 80px;
+                transition: left 0.3s ease;
+                z-index: 1000;
+            }
+
+            nav ul.show {
+                left: 0;
+            }
+
+            nav ul li {
+                padding: 15px;
+            }
+
+            nav ul li a {
+                color: white;
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav>
-        <h1>Math & Science Tutor</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="terms.html">Terms & Conditions</a></li>
-        </ul>
-        <button id="darkModeToggle">🌙 Dark Mode</button>
-    </nav>
+<nav>
+    <h1>Math & Science Tutor</h1>
 
-    <section>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <ul id="navMenu">
+        <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+        <li><a href="terms.html" onclick="closeMenu()">Terms & Conditions</a></li>
+    </ul>
+
+    <button id="darkModeToggle">🌙 Dark Mode</button>
+</nav>
+
+<section>
+
+    <h2>Terms & Conditions</h2>
+
+    <p><strong>1. Ethical Hacking Disclaimer</strong></p>
+    <p>
+        Ethical Hacking lessons are provided strictly for educational purposes.
+        All techniques and tools are taught to help students understand cybersecurity,
+        system vulnerabilities, and defensive security practices.
+        Students must never use this knowledge for illegal, unethical, or unauthorized activities.
+    </p>
+
+    <p><strong>2. What Will Be Taught in Ethical Hacking</strong></p>
+    <p>
+        Ethical Hacking lessons focus on understanding how systems are attacked
+        so that they can be properly protected. Topics include:
+    </p>
+
+    <ul>
+        <li>Networking fundamentals and protocols</li>
+        <li>Reconnaissance and information gathering</li>
+        <li>Vulnerability scanning and analysis</li>
+        <li>Web application security basics</li>
+        <li>Password security and hashing concepts</li>
+        <li>Wireless network security</li>
+        <li>Defensive security and best practices</li>
+    </ul>
+
+    <p><strong>3. Tools Covered in Ethical Hacking</strong></p>
+    <p>
+        The following tools are introduced and explained in an educational environment only:
+    </p>
+
+    <ul>
+        <li><strong>Nmap</strong> – Network discovery and security auditing</li>
+        <li><strong>Wireshark</strong> – Network traffic analysis</li>
+        <li><strong>Metasploit</strong> – Vulnerability exploitation demonstrations</li>
+        <li><strong>Burp Suite</strong> – Web application security testing</li>
+        <li><strong>Aircrack-ng</strong> – Wireless security analysis</li>
+        <li><strong>Hydra</strong> – Authentication security testing</li>
+        <li><strong>Gobuster</strong> – Directory enumeration</li>
+        <li><strong>Sqlmap</strong> – SQL injection demonstrations</li>
+        <li><strong>John the Ripper</strong> – Password cracking tool</li>
+        <li><strong>BloodHound</strong> – Active Directory security analysis</li>
+    </ul>
+
+    <p><strong>4. Student Responsibility</strong></p>
+    <p>
+        Students are fully responsible for how they apply the knowledge gained.
+        Ethical Hacking tools must only be used on systems they own or have
+        explicit written permission to test.
+    </p>
+
+    <p><strong>5. Payments</strong></p>
+    <p>
+        All lessons must be paid for in advance unless otherwise agreed upon.
+    </p>
+
+    <p><strong>6. Cancellations</strong></p>
+    <p>
+        Lessons must be cancelled at least 24 hours in advance.
+    </p>
+
+    <p><strong>7. Online Lessons</strong></p>
+    <p>
+        Online sessions are conducted via Zoom or Google Meet.
+    </p>
+
+    <p><strong>8. Early Booking Policy</strong></p>
+    <p>
+        School-related tutoring (Mathematics & Physical Sciences) requires early booking
+        to ensure effective lesson planning, syllabus alignment, and consistent academic support.
+    </p>
+
+    <p><strong>9. Availability & Scheduling</strong></p>
+    <p>
+        Tutoring availability is limited and based on a weekly schedule.
+        Students seeking school-related tutoring are required to apply early
+        to secure available time slots and ensure structured academic planning.
+    </p>
+
+</section>
+
+<footer>
+    <p>© 2025 Math & Science Tutor</p>
+</footer>
+
+<script src="script.js"></script>
 
 
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("show");
+}
+function closeMenu() {
+    document.getElementById("navMenu").classList.remove("show");
+}
+</script>
 
-        <h2>Terms & Conditions</h2>
-
-        <p><strong>1. Ethical Hacking Disclaimer</strong></p>
-        <p>
-            Ethical Hacking lessons are provided strictly for educational purposes.
-            All techniques and tools are taught to help students understand cybersecurity,
-            system vulnerabilities, and defensive security practices.
-            Students must never use this knowledge for illegal, unethical, or unauthorized activities.
-        </p>
-
-        <p><strong>2. What Will Be Taught in Ethical Hacking</strong></p>
-        <p>
-            Ethical Hacking lessons focus on understanding how systems are attacked
-            so that they can be properly protected. Topics include:
-        </p>
-        <ul>
-            <li>Networking fundamentals and protocols</li>
-            <li>Reconnaissance and information gathering</li>
-            <li>Vulnerability scanning and analysis</li>
-            <li>Web application security basics</li>
-            <li>Password security and hashing concepts</li>
-            <li>Wireless network security</li>
-            <li>Defensive security and best practices</li>
-        </ul>
-
-        <p><strong>3. Tools Covered in Ethical Hacking</strong></p>
-        <p>
-            The following tools are introduced and explained in an educational environment only:
-        </p>
-
-        <ul>
-            <li>
-                <strong>Nmap</strong> – Used for network discovery and security auditing.
-                It helps identify devices, open ports, and services running on a network.
-            </li>
-
-            <li>
-                <strong>Wireshark</strong> – A network protocol analyzer used to capture
-                and inspect network traffic for learning how data flows across networks.
-            </li>
-
-            <li>
-                <strong>Metasploit</strong> – A penetration testing framework used to
-                demonstrate how known vulnerabilities can be exploited and patched.
-            </li>
-
-            <li>
-                <strong>Burp Suite</strong> – A web security testing tool used to analyze
-                web application requests, responses, and vulnerabilities.
-            </li>
-
-            <li>
-                <strong>Aircrack-ng</strong> – A suite of tools used to study wireless
-                network security and understand encryption weaknesses.
-            </li>
-
-            <li>
-                <strong>Hydra</strong> – A password testing tool used to demonstrate
-                the importance of strong authentication systems.
-            </li>
-
-            <li>
-                <strong>Gobuster</strong> – A directory and file brute-forcing tool
-                used to identify hidden paths on web servers.
-            </li>
-
-            <li>
-                <strong>Sqlmap</strong> – An automated SQL injection testing tool
-                used to demonstrate database vulnerabilities.
-            </li>
-
-            <li>
-                <strong>John the Ripper</strong> – A password cracking tool used to
-                teach password hashing, strength, and security.
-            </li>
-
-            <li>
-                <strong>BloodHound</strong> – A tool used to analyze Active Directory
-                environments and understand privilege escalation paths.
-            </li>
-        </ul>
-
-        <p><strong>4. Student Responsibility</strong></p>
-        <p>
-            Students are fully responsible for how they apply the knowledge gained.
-            Ethical Hacking tools must only be used on systems they own or have
-            explicit written permission to test.
-        </p>
-
-        <p><strong>5. Payments</strong></p>
-        <p>
-            All lessons must be paid for in advance unless otherwise agreed upon.
-        </p>
-
-        <p><strong>6. Cancellations</strong></p>
-        <p>
-            Lessons must be cancelled at least 24 hours in advance.
-        </p>
-
-        <p><strong>7. Online Lessons</strong></p>
-        <p>
-            Online sessions are conducted via Zoom or Google Meet.
-        </p>
-
-         <p><strong>8. Early Booking Policy</strong></p>
-        <p>
-            School-related tutoring (Mathematics & Physical Sciences) requires early booking
-            to ensure effective lesson planning, syllabus alignment, and consistent academic support.
-        </p>
-
-        <p><strong>9. Availability & Scheduling</strong></p>
-<p>
-    Tutoring availability is limited and based on a weekly schedule.
-    Students seeking school-related tutoring are required to apply early
-    to secure available time slots and ensure structured academic planning.
-</p>
-
-    </section>
-
-    <footer>
-        <p>© 2025 Math & Science Tutor</p>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
-
 </html>

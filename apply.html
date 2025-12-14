@@ -1,71 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
+    <!-- MOBILE RESPONSIVENESS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="author" content="Lwandiso Nunu">
     <title>Apply for Tutoring | Lwandiso Nunu</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        section {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .summary {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .summary strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        button {
+            background: #111;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 22px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <nav>
     <h1>Math & Science Tutor</h1>
-    <ul>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <ul id="navMenu">
         <li><a href="index.html">Home</a></li>
     </ul>
-    <button id="darkModeToggle">🌙 Dark Mode</button>
+
+    <button id="darkModeToggle">🌙</button>
 </nav>
+
 
 <section>
     <h2>Apply for Tutoring</h2>
 
-    <p><strong>Early Booking Notice:</strong><br>
-        Students applying for school-related tutoring are required to apply early
-        to ensure proper lesson planning and structured academic progress.
-    </p>
+    <div class="summary">
+        <strong>Booking Summary</strong>
+        <p><strong>Package:</strong> <span id="pkgText">Not selected</span></p>
+        <p><strong>Time Slot:</strong> <span id="slotText">Not selected</span></p>
+        <p><strong>Total Amount:</strong> R<span id="priceText">0</span></p>
+        <p><strong>Payment Status:</strong> Pending</p>
+    </div>
 
-    <p>
-    <strong>Availability Notice:</strong><br>
-    Lesson slots are allocated on a first-come, first-served basis.
-    School-related tutoring applicants are encouraged to apply early
-    to secure availability shown on the weekly calendar.
-</p>
-
-
-    <form action="mailto:s217477089@mandela.ac.za" method="POST" enctype="text/plain">
-
+    <form onsubmit="generateInvoice(event)">
         <input type="text" name="Full Name" placeholder="Full Name" required>
         <input type="email" name="Email" placeholder="Email Address" required>
         <input type="tel" name="Phone" placeholder="Phone Number" required>
 
-        <label>Subject</label>
+        <textarea name="Address" placeholder="Residential Address" required></textarea>
+
         <select name="Subject" required>
+            <option value="">Select Subject</option>
             <option>Mathematics</option>
             <option>Physical Sciences</option>
             <option>Computer Science</option>
             <option>Ethical Hacking</option>
         </select>
 
-        <label>Grade / Level</label>
-        <select name="Grade" required>
-            <option>Grades 1 – 7</option>
-            <option>Grades 8 – 9</option>
-            <option>Grades 10 – 12</option>
-            <option>University / College</option>
+    
+        <select name="Package" required onchange="updatePackage(this)">
+            <option value="">Select Package</option>
+            <option value="Hourly" data-price="50">Hourly – R50</option>
+            <option value="Starter" data-price="350">Starter – R350</option>
+            <option value="Standard" data-price="400">Standard – R400</option>
+            <option value="Intensive" data-price="700">Intensive – R700</option>
         </select>
 
-        <label>Package</label>
-        <select name="Package" required>
-            <option>Hourly</option>
-            <option>Starter</option>
-            <option>Standard</option>
-            <option>Intensive</option>
-        </select>
+        <textarea placeholder="Additional information (grade, goals, etc.)"></textarea>
 
-        <textarea name="Additional Info" placeholder="Additional information"></textarea>
-
-        <button type="submit">Submit Booking</button>
+        <button type="submit">Submit Booking & Download Invoice</button>
     </form>
 </section>
 
@@ -74,5 +135,141 @@
 </footer>
 
 <script src="script.js"></script>
+
+<script>
+
+const savedPkg = localStorage.getItem("selectedPackage");
+const savedPrice = localStorage.getItem("selectedPrice");
+const savedSlot = localStorage.getItem("selectedSlot");
+
+if (savedPkg) document.getElementById("pkgText").innerText = savedPkg;
+if (savedSlot) document.getElementById("slotText").innerText = savedSlot;
+if (savedPrice) document.getElementById("priceText").innerText = savedPrice;
+
+
+function updatePackage(select) {
+    const option = select.options[select.selectedIndex];
+    const price = option.dataset.price;
+    const pkg = option.value;
+
+    localStorage.setItem("selectedPackage", pkg);
+    localStorage.setItem("selectedPrice", price);
+
+    document.getElementById("pkgText").innerText = pkg;
+    document.getElementById("priceText").innerText = price;
+}
+
+
+function generateInvoice(e) {
+    e.preventDefault();
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+
+    const name = document.querySelector('[name="Full Name"]').value;
+    const subject = document.querySelector('[name="Subject"]').value;
+    const address = document.querySelector('[name="Address"]').value;
+
+    const pkg = localStorage.getItem("selectedPackage") || "Not Selected";
+    const price = localStorage.getItem("selectedPrice") || "0";
+    const slot = localStorage.getItem("selectedSlot") || "Not Selected";
+    const date = new Date().toLocaleDateString();
+
+
+    const invoiceNumber = "INV-" + Date.now();
+
+    let bookedSlots = JSON.parse(localStorage.getItem("bookedSlots")) || [];
+    bookedSlots.push(slot);
+    localStorage.setItem("bookedSlots", JSON.stringify(bookedSlots));
+
+
+    pdf.setFillColor(17, 17, 17);
+    pdf.rect(0, 0, 210, 30, "F");
+
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(18);
+    pdf.text("Tutoring Invoice", 105, 20, { align: "center" });
+
+    pdf.setTextColor(0, 0, 0);
+    pdf.setFontSize(12);
+
+    let y = 45;
+
+    pdf.setFont(undefined, "bold");
+    pdf.text("Invoice No:", 20, y);
+    pdf.setFont(undefined, "normal");
+    pdf.text(invoiceNumber, 70, y);
+
+    y += 10;
+    pdf.setFont(undefined, "bold");
+    pdf.text("Date:", 20, y);
+    pdf.setFont(undefined, "normal");
+    pdf.text(date, 70, y);
+
+    y += 15;
+    pdf.setFont(undefined, "bold");
+    pdf.text("Student:", 20, y);
+    pdf.setFont(undefined, "normal");
+    pdf.text(name, 70, y);
+
+    y += 10;
+    pdf.setFont(undefined, "bold");
+    pdf.text("Address:", 20, y);
+    pdf.setFont(undefined, "normal");
+    pdf.text(address, 70, y, { maxWidth: 110 });
+
+    y += 15;
+    pdf.setFont(undefined, "bold");
+    pdf.text("Subject:", 20, y);
+    pdf.setFont(undefined, "normal");
+    pdf.text(subject, 70, y);
+
+    y += 10;
+    pdf.setFont(undefined, "bold");
+    pdf.text("Package:", 20, y);
+    pdf.setFont(undefined, "normal");
+    pdf.text(pkg, 70, y);
+
+    y += 10;
+    pdf.setFont(undefined, "bold");
+    pdf.text("Time Slot:", 20, y);
+    pdf.setFont(undefined, "normal");
+    pdf.text(slot, 70, y);
+
+    y += 10;
+    pdf.setFont(undefined, "bold");
+    pdf.text("Payment Status:", 20, y);
+    pdf.setFont(undefined, "normal");
+    pdf.text("Pending", 70, y);
+
+    y += 20;
+    pdf.setFillColor(240, 240, 240);
+    pdf.rect(15, y - 10, 180, 20, "F");
+
+    pdf.setFontSize(14);
+    pdf.setFont(undefined, "bold");
+    pdf.text("TOTAL AMOUNT:", 25, y + 3);
+    pdf.text(`R${price}`, 160, y + 3, { align: "right" });
+
+    /* FOOTER */
+    pdf.setFontSize(10);
+    pdf.setTextColor(120, 120, 120);
+    pdf.text(
+        "Payment status: Pending\nPlease keep this invoice for your records.",
+        105,
+        270,
+        { align: "center" }
+    );
+
+    pdf.save(`Invoice_${invoiceNumber}.pdf`);
+    alert("Booking successful! Invoice downloaded.");
+}
+
+/* MOBILE MENU */
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
 </body>
 </html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- MOBILE RESPONSIVENESS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- AUTHOR & SEO -->
+    <meta name="author" content="Lwandiso Nunu">
+    <meta name="description"
+        content="Student academic support including NSFAS applications, bursaries, and university applications guided by Lwandiso Nunu.">
+    <meta name="keywords"
+        content="NSFAS application, bursary application, university application South Africa, student support, Lwandiso Nunu">
+
+    <title>Student Support | Lwandiso Nunu</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- MOBILE MENU FIX -->
+    <style>
+        /* Hide hamburger on desktop */
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Desktop nav */
+        nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        /* Mobile menu */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                left: -260px;
+                width: 250px;
+                height: 100vh;
+                background: #111;
+                flex-direction: column;
+                padding-top: 80px;
+                transition: left 0.3s ease;
+                z-index: 1000;
+            }
+
+            nav ul.show {
+                left: 0;
+            }
+
+            nav ul li {
+                padding: 15px;
+            }
+
+            nav ul li a {
+                color: white;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <h1>Math & Science Tutor</h1>
+
+    <!-- MOBILE MENU BUTTON -->
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <ul id="navMenu">
+        <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+        <li><a href="apply.html" onclick="closeMenu()">Apply</a></li>
+        <li><a href="terms.html" onclick="closeMenu()">Terms</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+
+    <button id="darkModeToggle">🌙</button>
+</nav>
+
+<!-- HEADER -->
+<section>
+    <h2>Student Academic Support</h2>
+
+    <p>
+        This page is designed to assist students with
+        <strong>NSFAS applications</strong>,
+        <strong>bursaries</strong>, and
+        <strong>university applications</strong>.
+        <br><br>
+        <strong>Early application is strongly recommended</strong>
+        to avoid missing deadlines and improve chances of acceptance.
+    </p>
+</section>
+
+<!-- NSFAS -->
+<section>
+    <h3>🎓 NSFAS Applications</h3>
+
+    <p>
+        The National Student Financial Aid Scheme (NSFAS) provides funding
+        for eligible South African students studying at public universities
+        and TVET colleges.
+    </p>
+
+    <ul>
+        <li>Funding for tuition, accommodation, books, and meals</li>
+        <li>For students from low-income households</li>
+        <li>Online application process</li>
+    </ul>
+
+    <p>
+        <strong>Important:</strong><br>
+        NSFAS applications are currently closed.
+        NSFAS will start communicating application results via the
+        <strong>myNSFAS portal from 15 December 2025</strong>.
+    </p>
+
+    <p>
+        🔗 Official NSFAS Website:
+        <a href="https://www.nsfas.org.za" target="_blank">
+            https://www.nsfas.org.za
+        </a>
+    </p>
+</section>
+
+<!-- BURSARIES -->
+<section>
+    <h3>💼 Bursaries & Scholarships</h3>
+
+    <p>
+        Many organisations offer bursaries and scholarships for students
+        based on academic performance, financial need, or field of study.
+    </p>
+
+    <ul>
+        <li>Government bursaries</li>
+        <li>Private company bursaries</li>
+        <li>University-specific funding</li>
+        <li>Field-specific bursaries (Science, Accounting, IT)</li>
+    </ul>
+
+    <p>
+        <strong>Important:</strong>
+        Each bursary has different requirements and closing dates.
+        Applying early increases your chances.
+    </p>
+
+    <p>
+        🔗 Useful Bursary Websites:
+        <br>
+        <a href="https://www.zabursaries.co.za" target="_blank">
+            https://www.zabursaries.co.za
+        </a>
+        <br>
+        <a href="https://www.studentroom.co.za" target="_blank">
+            https://www.studentroom.co.za
+        </a>
+    </p>
+</section>
+
+<!-- UNIVERSITY APPLICATIONS -->
+<section>
+    <h3>🏫 University Applications</h3>
+
+    <p>
+        Applying to university early is critical, especially for
+        competitive programmes such as Science, Accounting, and IT.
+    </p>
+
+    <ul>
+        <li>Check minimum admission requirements</li>
+        <li>Prepare academic results early</li>
+        <li>Apply before closing dates</li>
+        <li>Apply to multiple institutions if possible</li>
+    </ul>
+
+    <p>
+        🔗 Central Applications:
+        <br>
+        <a href="https://www.cao.ac.za" target="_blank">
+            Central Applications Office (CAO)
+        </a>
+    </p>
+
+    <p>
+        🔗 Example University:
+        <br>
+        <a href="https://www.mandela.ac.za" target="_blank">
+            Nelson Mandela University
+        </a>
+    </p>
+</section>
+
+<!-- WHY EARLY -->
+<section>
+    <h3>⏰ Why Early Applications Matter</h3>
+
+    <ul>
+        <li>Avoid missing deadlines</li>
+        <li>Better funding opportunities</li>
+        <li>Less stress and pressure</li>
+        <li>Time to correct application errors</li>
+        <li>Improved academic planning</li>
+    </ul>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h3>Need Guidance?</h3>
+
+    <p>
+        If you need help understanding application requirements
+        or academic planning, feel free to reach out.
+    </p>
+
+    <p>Email:
+        <a href="mailto:s217477089@mandela.ac.za">
+            s217477089@mandela.ac.za
+        </a>
+    </p>
+
+    <p>WhatsApp:
+        <a href="https://wa.me/27719358875" target="_blank">
+            +27 71 935 8875
+        </a>
+    </p>
+</section>
+
+<footer>
+    <p>© 2025 Math & Science Tutor</p>
+</footer>
+
+<script src="script.js"></script>
+
+<!-- MOBILE MENU SCRIPT -->
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("show");
+}
+function closeMenu() {
+    document.getElementById("navMenu").classList.remove("show");
+}
+</script>
+
+</body>
+</html>
