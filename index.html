@@ -1,224 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-
-    <!-- MOBILE RESPONSIVENESS -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- AUTHOR & SEO -->
-    <meta name="author" content="Lwandiso Nunu">
-    <meta name="description"
-        content="Tutoring services by Lwandiso Nunu offering Mathematics, Physical Sciences, Computer Science, Ethical Hacking education, and student academic support.">
-    <meta name="keywords"
-        content="Lwandiso Nunu, Math Tutor, Science Tutor, Physical Sciences, Computer Science Tutor, Ethical Hacking, South Africa">
-
-    <title>Nunu Tuto Hub | Math & Science Tutors</title>
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* ===========================
-           MOBILE MENU FIX
-        =========================== */
-        .menu-toggle {
-            display: none;
-            font-size: 26px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 15px;
-            list-style: none;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            nav ul {
-                position: fixed;
-                top: 0;
-                left: -260px;
-                width: 250px;
-                height: 100vh;
-                background: #111;
-                flex-direction: column;
-                padding-top: 80px;
-                transition: left 0.3s ease;
-                z-index: 1000;
-            }
-
-            nav ul.show {
-                left: 0;
-            }
-
-            nav ul li a {
-                color: white;
-                font-size: 18px;
-            }
-        }
-
-        /* ===========================
-           SUBJECT CARDS (ECOMMERCE STYLE)
-        =========================== */
-        .subject-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .subject-card {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-            background: #fff;
-        }
-
-        .subject-card h4 {
-            margin-bottom: 10px;
-        }
-
-        .subject-card a {
-            color: #0077ff;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        /* ===========================
-           MODAL + SPINNER
-        =========================== */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            width: 300px;
-        }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 5px solid #ccc;
-            border-top: 5px solid #0077ff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Under Maintenance</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6B73FF, #000DFF);
+    color: white;
+    text-align: center;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1.5rem;
+  }
+  .spinner {
+    margin-top: 2rem;
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+</style>
 </head>
-
 <body>
-
-<!-- NAVIGATION -->
-<nav>
-    <h1>Nunu Tuto Hub</h1>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
-    <ul id="navMenu">
-        <li><a href="#home" onclick="closeMenu()">Home</a></li>
-        <li><a href="#subjects" onclick="closeMenu()">Subjects</a></li>
-        <li><a href="#grades" onclick="closeMenu()">Grades</a></li>
-        <li><a href="#pricing" onclick="closeMenu()">Pricing</a></li>
-        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-    </ul>
-</nav>
-
-<!-- HOME -->
-<section id="home">
-    <h2>Professional Tutoring Services</h2>
-    <p>Mathematics • Physical Sciences • Computer Science</p>
-    <button onclick="window.location.href='apply.html'">Book a Lesson</button>
-</section>
-
-<!-- SUBJECTS -->
-<section id="subjects">
-    <h2>Subjects Offered</h2>
-
-    <div class="subject-grid">
-        <div class="subject-card">
-            <h4>Mathematics</h4>
-            <p>All grades, foundational to advanced</p>
-            <a onclick="openModal('math')">See more details →</a>
-        </div>
-
-        <div class="subject-card">
-            <h4>Physical Sciences</h4>
-            <p>Grades 10 – 12</p>
-            <a onclick="openModal('science')">See more details →</a>
-        </div>
-
-        <div class="subject-card">
-            <h4>Computer Science</h4>
-            <p>University & App Development</p>
-            <a onclick="openModal('cs')">See more details →</a>
-        </div>
-
-        <div class="subject-card">
-            <h4>Ethical Hacking</h4>
-            <p>Educational cybersecurity training</p>
-            <a onclick="openModal('hacking')">See more details →</a>
-        </div>
-    </div>
-</section>
-
-<!-- LOADING MODAL -->
-<div id="loadingModal" class="modal">
-    <div class="modal-content">
-        <h3>Loading details...</h3>
-        <div class="spinner"></div>
-        <p>Please wait</p>
-    </div>
-</div>
-
-<!-- CONTACT -->
-<section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:s217477089@mandela.ac.za">s217477089@mandela.ac.za</a></p>
-    <p>WhatsApp: <a href="https://wa.me/27719358875" target="_blank">+27 71 935 8875</a></p>
-</section>
-
-<footer>
-    <p>© 2025 Nunu Tuto Hub</p>
-</footer>
-
-<script>
-    function toggleMenu() {
-        document.getElementById("navMenu").classList.toggle("show");
-    }
-
-    function closeMenu() {
-        document.getElementById("navMenu").classList.remove("show");
-    }
-
-    function openModal(subject) {
-        const modal = document.getElementById("loadingModal");
-        modal.style.display = "flex";
-
-        setTimeout(() => {
-            window.location.href = "tutors.html?subject=" + subject;
-        }, 1500);
-    }
-</script>
-
+  <div>
+    <h1>We'll be back soon!</h1>
+    <p>This website is undergoing major updates.</p>
+    <div class="spinner"></div>
+  </div>
 </body>
 </html>
