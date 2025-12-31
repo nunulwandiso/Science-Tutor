@@ -14,12 +14,13 @@
     <meta name="keywords"
         content="Lwandiso Nunu, Math Tutor, Science Tutor, Physical Sciences, Computer Science Tutor, Ethical Hacking, South Africa">
 
-    <title>Math & Science Tutor | Lwandiso Nunu</title>
+    <title>Nunu Tuto Hub | Math & Science Tutors</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- MOBILE MENU FIX -->
     <style>
-        /* Hide hamburger on desktop */
+        /* ===========================
+           MOBILE MENU FIX
+        =========================== */
         .menu-toggle {
             display: none;
             font-size: 26px;
@@ -28,14 +29,12 @@
             cursor: pointer;
         }
 
-        /* Desktop nav */
         nav ul {
             display: flex;
             gap: 15px;
             list-style: none;
         }
 
-        /* Mobile styles */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -58,20 +57,72 @@
                 left: 0;
             }
 
-            nav ul li {
-                padding: 15px;
-            }
-
             nav ul li a {
                 color: white;
                 font-size: 18px;
             }
         }
 
-        /* Pricing highlight */
-        .price-card.selected {
-            border: 2px solid #00ffcc;
-            transform: scale(1.05);
+        /* ===========================
+           SUBJECT CARDS (ECOMMERCE STYLE)
+        =========================== */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .subject-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .subject-card h4 {
+            margin-bottom: 10px;
+        }
+
+        .subject-card a {
+            color: #0077ff;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* ===========================
+           MODAL + SPINNER
+        =========================== */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 5px solid #ccc;
+            border-top: 5px solid #0077ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -80,209 +131,93 @@
 
 <!-- NAVIGATION -->
 <nav>
-    <h1>Math & Science Tutor</h1>
-
-    <!-- MOBILE MENU BUTTON -->
+    <h1>Nunu Tuto Hub</h1>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
     <ul id="navMenu">
         <li><a href="#home" onclick="closeMenu()">Home</a></li>
         <li><a href="#subjects" onclick="closeMenu()">Subjects</a></li>
         <li><a href="#grades" onclick="closeMenu()">Grades</a></li>
-        <li><a href="student-support.html" onclick="closeMenu()">Student Support</a></li>
-        <li><a href="#availability" onclick="closeMenu()">Availability</a></li>
         <li><a href="#pricing" onclick="closeMenu()">Pricing</a></li>
-        <li><a href="#testimonials" onclick="closeMenu()">Testimonials</a></li>
-        <li><a href="#about" onclick="closeMenu()">About</a></li>
         <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
     </ul>
-
-    <button id="darkModeToggle">🌙</button>
 </nav>
 
 <!-- HOME -->
 <section id="home">
     <h2>Professional Tutoring Services</h2>
-    <p>Mathematics (All Grades) • Physical Sciences • Computer Science</p>
-
-    <p><strong>Important Notice:</strong><br>
-        For school-related tutoring, students are required to book or apply early
-        to allow proper lesson planning and structured academic progress.
-    </p>
-
+    <p>Mathematics • Physical Sciences • Computer Science</p>
     <button onclick="window.location.href='apply.html'">Book a Lesson</button>
 </section>
 
 <!-- SUBJECTS -->
 <section id="subjects">
     <h2>Subjects Offered</h2>
-    <ul>
-        <li>Mathematics – All Grades</li>
-        <li>Physical Sciences – Grades 10–12</li>
-        <li>Computer Science – University / App Development</li>
-        <li>Ethical Hacking (Educational)</li>
-        <li>Exam & Test Preparation</li>
-        <li>Homework Assistance</li>
-    </ul>
-</section>
 
-<!-- GRADES -->
-<section id="grades">
-    <h2>Grade-by-Grade Support</h2>
-
-    <div class="pricing-cards">
-        <div class="card">
-            <h4>Grades 1 – 7</h4>
-            <p>Basic Mathematics</p>
-            <p>Problem solving</p>
-            <p>Homework support</p>
+    <div class="subject-grid">
+        <div class="subject-card">
+            <h4>Mathematics</h4>
+            <p>All grades, foundational to advanced</p>
+            <a onclick="openModal('math')">See more details →</a>
         </div>
 
-        <div class="card">
-            <h4>Grades 8 – 9</h4>
-            <p>Mathematics foundations</p>
-            <p>Introduction to Sciences</p>
-            <p>Test preparation</p>
+        <div class="subject-card">
+            <h4>Physical Sciences</h4>
+            <p>Grades 10 – 12</p>
+            <a onclick="openModal('science')">See more details →</a>
         </div>
 
-        <div class="card">
-            <h4>Grades 10 – 12</h4>
-            <p>Advanced Mathematics</p>
-            <p>Physical Sciences</p>
-            <p>Exam preparation</p>
+        <div class="subject-card">
+            <h4>Computer Science</h4>
+            <p>University & App Development</p>
+            <a onclick="openModal('cs')">See more details →</a>
         </div>
 
-        <div class="card">
-            <h4>University / College</h4>
-            <p>Computer Science</p>
-            <p>Programming basics</p>
-            <p>Application development</p>
+        <div class="subject-card">
+            <h4>Ethical Hacking</h4>
+            <p>Educational cybersecurity training</p>
+            <a onclick="openModal('hacking')">See more details →</a>
         </div>
     </div>
 </section>
 
-<!-- AVAILABILITY -->
-<section id="availability">
-    <h2>Weekly Availability</h2>
-    <p><strong>Apply early</strong> to secure preferred time slots.</p>
-
-    <div class="availability-grid">
-        <button class="slot" onclick="selectSlot('Monday 09:00–17:30')">Monday</button>
-        <button class="slot" onclick="selectSlot('Tuesday 09:00–17:30')">Tuesday</button>
-        <button class="slot" onclick="selectSlot('Wednesday 09:00–17:30')">Wednesday</button>
-        <button class="slot" onclick="selectSlot('Thursday 09:00–17:30')">Thursday</button>
-        <button class="slot" onclick="selectSlot('Friday 09:00–17:30')">Friday</button>
-        <button class="slot night" onclick="selectSlot('Friday 18:00–00:00')">Friday Night</button>
-        <button class="slot night" onclick="selectSlot('Saturday 18:00–00:00')">Saturday Night</button>
-        <button class="slot night" onclick="selectSlot('Sunday 18:00–00:00')">Sunday Night</button>
+<!-- LOADING MODAL -->
+<div id="loadingModal" class="modal">
+    <div class="modal-content">
+        <h3>Loading details...</h3>
+        <div class="spinner"></div>
+        <p>Please wait</p>
     </div>
-
-    <p id="selectedSlotText"></p>
-
-    <button id="applyBtn" style="display:none" onclick="window.location.href='apply.html'">
-        Apply & Secure This Slot
-    </button>
-</section>
-
-<!-- PRICING (ADDED – NOTHING ELSE TOUCHED) -->
-<section id="pricing">
-    <h2>Pricing</h2>
-
-    <h3>Hourly Rate</h3>
-    <div class="pricing-cards">
-        <div class="card price-card" data-package="Hourly" data-price="50">
-            <h4>Hourly</h4>
-            <p class="price">R50 / hour</p>
-            <p>Flexible scheduling</p>
-        </div>
-    </div>
-
-    <h3>Monthly Packages</h3>
-    <div class="pricing-cards">
-        <div class="card price-card" data-package="Starter" data-price="350">
-            <h4>Starter</h4>
-            <p>R350 / month</p>
-            <p>1 lesson per week</p>
-        </div>
-
-        <div class="card price-card" data-package="Standard" data-price="400">
-            <h4>Standard</h4>
-            <p>R400 / month</p>
-            <p>2 lessons per week</p>
-        </div>
-
-        <div class="card price-card" data-package="Intensive" data-price="700">
-            <h4>Intensive</h4>
-            <p>R700 / month</p>
-            <p>4 lessons per week</p>
-        </div>
-    </div>
-
-    <p id="selectedPackageText"></p>
-
-    <button onclick="window.location.href='apply.html'">
-        Proceed to Apply
-    </button>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-    <h2>What Students Say</h2>
-
-    <div class="pricing-cards">
-        <div class="card">
-            ⭐⭐⭐⭐⭐
-            <p>"My maths improved drastically. Lessons are clear and structured."</p>
-            <strong>– Grade 11 Student</strong>
-        </div>
-
-        <div class="card">
-            ⭐⭐⭐⭐⭐
-            <p>"Helped me pass Physical Sciences when I was struggling."</p>
-            <strong>– Grade 12 Learner</strong>
-        </div>
-
-        <div class="card">
-            ⭐⭐⭐⭐⭐
-            <p>"Computer Science concepts finally make sense."</p>
-            <strong>– University Student</strong>
-        </div>
-    </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-    <h2>About Me</h2>
-    <p>
-        I am currently studying a <strong>Bachelor of Commerce in Accounting Sciences</strong>
-        with <strong>Computer Science and Information Systems</strong> at
-        <strong>Nelson Mandela University</strong>.
-        <br><br>
-        <a href="about.html"><strong>Read more about me</strong></a>
-    </p>
-</section>
+</div>
 
 <!-- CONTACT -->
 <section id="contact">
     <h2>Contact Me</h2>
     <p>Email: <a href="mailto:s217477089@mandela.ac.za">s217477089@mandela.ac.za</a></p>
     <p>WhatsApp: <a href="https://wa.me/27719358875" target="_blank">+27 71 935 8875</a></p>
-    <p>Facebook: <a href="https://www.facebook.com/lwandiso.nunu.52" target="_blank">Lwandiso Nunu</a></p>
 </section>
 
 <footer>
-    <p>© 2025 Math & Science Tutor</p>
+    <p>© 2025 Nunu Tuto Hub</p>
 </footer>
 
-<script src="script.js"></script>
-
 <script>
-function toggleMenu() {
-    document.getElementById("navMenu").classList.toggle("show");
-}
-function closeMenu() {
-    document.getElementById("navMenu").classList.remove("show");
-}
+    function toggleMenu() {
+        document.getElementById("navMenu").classList.toggle("show");
+    }
+
+    function closeMenu() {
+        document.getElementById("navMenu").classList.remove("show");
+    }
+
+    function openModal(subject) {
+        const modal = document.getElementById("loadingModal");
+        modal.style.display = "flex";
+
+        setTimeout(() => {
+            window.location.href = "tutors.html?subject=" + subject;
+        }, 1500);
+    }
 </script>
 
 </body>

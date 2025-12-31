@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nunu Tuto Hub | Tutors</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* FILTER BAR */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filters button {
+            padding: 8px 14px;
+            border: none;
+            cursor: pointer;
+            background: #ddd;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .filters button.active {
+            background: #0077ff;
+            color: white;
+        }
+
+        /* TUTOR GRID */
+        .tutor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .tutor-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tutor-card h3 {
+            margin-top: 0;
+        }
+
+        .tutor-card p {
+            margin: 6px 0;
+            font-size: 14px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #0077ff;
+            color: white;
+            padding: 4px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .book-btn {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background: #00aa88;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .book-btn:hover {
+            background: #008f73;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #111;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Available Tutors</h1>
+    <p>Choose the best tutor for your subject</p>
+</header>
+
+<!-- FILTER BUTTONS -->
+<div class="filters">
+    <button onclick="filterTutors('all')" class="active">All</button>
+    <button onclick="filterTutors('math')">Mathematics</button>
+    <button onclick="filterTutors('science')">Physical Sciences</button>
+    <button onclick="filterTutors('cs')">Computer Science</button>
+    <button onclick="filterTutors('hacking')">Ethical Hacking</button>
+</div>
+
+<!-- TUTOR LIST -->
+<div class="tutor-grid">
+
+    <!-- TUTOR 1 -->
+    <div class="tutor-card" data-subject="math">
+        <span class="badge">Mathematics</span>
+        <h3>Lwandiso Nunu</h3>
+        <p>📚 All grades</p>
+        <p>🎓 NMU – Accounting & Computer Science</p>
+        <p>⭐ 5+ years tutoring experience</p>
+        <button class="book-btn" onclick="bookTutor('Lwandiso Nunu')">
+            Book Tutor
+        </button>
+    </div>
+
+    <!-- TUTOR 2 -->
+    <div class="tutor-card" data-subject="science">
+        <span class="badge">Physical Sciences</span>
+        <h3>Thabo M.</h3>
+        <p>📚 Grades 10 – 12</p>
+        <p>🎓 BSc Physics</p>
+        <p>⭐ Exam preparation specialist</p>
+        <button class="book-btn" onclick="bookTutor('Thabo M.')">
+            Book Tutor
+        </button>
+    </div>
+
+    <!-- TUTOR 3 -->
+    <div class="tutor-card" data-subject="cs">
+        <span class="badge">Computer Science</span>
+        <h3>Ayesha K.</h3>
+        <p>💻 Programming & App Dev</p>
+        <p>🎓 Software Engineering</p>
+        <p>⭐ Beginner-friendly teaching</p>
+        <button class="book-btn" onclick="bookTutor('Ayesha K.')">
+            Book Tutor
+        </button>
+    </div>
+
+    <!-- TUTOR 4 -->
+    <div class="tutor-card" data-subject="hacking">
+        <span class="badge">Ethical Hacking</span>
+        <h3>Neo P.</h3>
+        <p>🔐 Cybersecurity fundamentals</p>
+        <p>🎓 Network Security</p>
+        <p>⭐ Educational & ethical focus</p>
+        <button class="book-btn" onclick="bookTutor('Neo P.')">
+            Book Tutor
+        </button>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2025 Nunu Tuto Hub</p>
+</footer>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const subjectFromHome = urlParams.get('subject');
+
+    function filterTutors(subject) {
+        const cards = document.querySelectorAll('.tutor-card');
+        const buttons = document.querySelectorAll('.filters button');
+
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        cards.forEach(card => {
+            if (subject === 'all' || card.dataset.subject === subject) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    if (subjectFromHome) {
+        setTimeout(() => {
+            document.querySelector(`.filters button[onclick*="${subjectFromHome}"]`)?.click();
+        }, 100);
+    }
+
+    function bookTutor(name) {
+        alert("You selected " + name + ". Redirecting to booking page...");
+        window.location.href = "apply.html";
+    }
+</script>
+
+</body>
+</html>
