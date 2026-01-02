@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nunuz Hub | Website Launching Soon</title>
+  <title>Nunuz Hub | Maintenance in Progress</title>
 
   <style>
     body {
@@ -34,7 +34,7 @@
       opacity: 0.95;
     }
 
-    .launch-date {
+    .maintenance-date {
       font-size: 1.2rem;
       margin-bottom: 1rem;
       font-weight: 600;
@@ -92,15 +92,16 @@
 
 <body>
   <div class="container">
-    <h1>🚧 We’ll Be Back Soon!</h1>
+    <h1>🚧 Website Under Maintenance</h1>
 
     <p>
-      The <strong>Nunuz Hub</strong> website is currently undergoing major updates
-      to bring you a better learning experience.
+      The <strong>Nunuz Hub</strong> website is currently undergoing important
+      updates to improve your learning experience.
     </p>
 
-    <div class="launch-date">
-      📅 Official Launch Af: <strong>10 January 2026</strong>
+    <div class="maintenance-date">
+      🛠️ Maintenance Completion Date:
+      <strong>10 January 2026</strong>
     </div>
 
     <div class="countdown">
@@ -125,21 +126,21 @@
     <div class="spinner"></div>
 
     <footer>
-      💙 Thank you for your patience — we’re preparing something meaningful for 2026.
+      💙 Thank you for your patience — we’re working to serve you better.
     </footer>
   </div>
 
   <script>
-    const launchDate = new Date("January 10, 2026 00:00:00").getTime();
+    const maintenanceEndDate = new Date("January 10, 2026 00:00:00").getTime();
 
     const countdown = setInterval(() => {
       const now = new Date().getTime();
-      const distance = launchDate - now;
+      const distance = maintenanceEndDate - now;
 
       if (distance < 0) {
         clearInterval(countdown);
         document.querySelector(".countdown").innerHTML =
-          "<strong>The website is now live!</strong>";
+          "<strong>Maintenance is complete. Please refresh the page.</strong>";
         return;
       }
 
